@@ -2,51 +2,50 @@ package TiketBioskop;
 import java.util.Scanner;
 
 public class MenuPesanTiket {
+    static Scanner input = new Scanner(System.in); //membuat objek input dari kelas Scanner
+    static VVIP vvip = new VVIP(); //membuat objek vvip dari kelas VVIP
+    static VIP vip = new VIP(); //membuat objek vip dari kelas VIP
+    static Ekonomi eko = new Ekonomi(); //membuat objek eko dari kelas Ekonomi
+    static ListPenjualanTiket list = new ListPenjualanTiket();
+
     public static void main (String [] args) {
-
-        Scanner input = new Scanner(System.in); //membuat objek input dari kelas Scanner
-        VVIP vvip = new VVIP(); //membuat objek vvip dari kelas VVIP
-        VIP vip = new VIP(); //membuat objek vip dari kelas VIP
-        Ekonomi eko = new Ekonomi(); //membuat objek eko dari kelas Ekonomi
-
         int pilihan;
-        char ulang;
 
+        //PERULANGAN DO WHILE
         do {
-            System.out.println("====================================");
-            System.out.println("|  Menu Pesan Tiket Bioskop XII    |");
-            System.out.println("| 1. VVIP    :          45.000.-   |");
-            System.out.println("| 2. VIP     :          40.000.-   |");
-            System.out.println("| 3. Ekonomi :          35.000.-   |");
-            System.out.println("| 4. Keluar                        |");
-            System.out.println("====================================");
-            System.out.println("Masukkan Pilihan: ");
+            System.out.println("______________________________________________________________________");
+            System.out.println("|                 Menu Pesan Tiket Bioskop Cinema XII                |");
+            System.out.println("|____________________________________________________________________|");
+            System.out.println("| 1. Tiket Kelas VVIP      : 45.000.-                                |");
+            System.out.println("| 2. Tiket Kelas VIP       : 40.000.-                                |");
+            System.out.println("| 3. Tiket Kelas Ekonomi   : 35.000.-                                |");
+            System.out.println("| 4. List Penjualan Tiket                                            |");
+            System.out.println("| 5. Keluar                                                          |");
+            System.out.println("|____________________________________________________________________|");
+            System.out.print  ("Masukkan Pilihan: ");
             pilihan = input.nextInt();
 
+            //PENCABANGAN SWITCH
             switch (pilihan) {
                 case 1:
-                    vvip.VVIP(); //memanggil method VVIP menggunakan objek vvip dari kelas VVIP
+                    vvip.pesanVVIP(); //memanggil method vvip
                     break;
                 case 2:
-                    vip.VIP();
+                    vip.pesanVIP(); //memanggil method vip
                     break;
                 case 3:
-                    eko.Ekonomi();
+                    eko.pesanEkonomi();
                     break;
                 case 4:
+                    list.listPesanan();
+                    break;
+                case 5:
                     System.out.println("Terima Kasih");
                     break;
                 default:
                     break;
             }
 
-            System.out.println("Apakah anda ingin memesan tiket lagi? (y/t): ");
-            ulang = input.next().charAt(0);
-
-        }while (ulang == 'y');
+        }while (pilihan != 5);
     }
 }
-
-
-
-
